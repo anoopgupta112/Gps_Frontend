@@ -1,0 +1,47 @@
+[
+    {
+        "user_id": 1,
+        "FName": "anooop",
+        "Lname": "chandra",
+        "email": "anoopgupta671@gmail.com",
+        "password": "23223",
+        "createdAt": "2022-11-03T08:39:16.000Z",
+        "updatedAt": "2022-11-03T08:39:16.000Z"
+    },
+    {
+        "user_id": 10,
+        "FName": "anooop",
+        "Lname": "chandra",
+        "email": "anoopgupta671@gmail.com",
+        "password": "23223",
+        "createdAt": "2022-11-03T09:48:46.000Z",
+        "updatedAt": "2022-11-03T09:48:46.000Z"
+    },
+    {
+        "user_id": 11,
+        "FName": "anooop",
+        "Lname": "chandra",
+        "email": "anoopgupta671@gmail.com",
+        "password": "23223",
+        "createdAt": "2022-11-03T09:49:56.000Z",
+        "updatedAt": "2022-11-03T09:49:56.000Z"
+    },
+    {
+        "user_id": 14,
+        "FName": "anooop",
+        "Lname": "chandra",
+        "email": "anoopgupta671@gmail.com",
+        "password": "23223",
+        "createdAt": "2022-11-03T09:52:18.000Z",
+        "updatedAt": "2022-11-03T09:52:18.000Z"
+    },
+    {
+        "user_id": 19,
+        "FName": "helo",
+        "Lname": "check",
+        "email": "anoop",
+        "password": "23223",
+        "createdAt": "2022-11-03T09:59:16.000Z",
+        "updatedAt": "2022-11-03T09:59:16.000Z"
+    }
+]

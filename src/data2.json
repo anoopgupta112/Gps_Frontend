@@ -1,0 +1,14 @@
+[
+    {
+        "DeviceId": 1,
+        "Device_Type": "anooop",
+        "Lname": "chandra",
+        "location": "anoopgupta671@gmail.com"
+    },
+    {
+        "DeviceId": 2,
+        "Device_Type": "anooop",
+        "Lname": "chandra",
+        "location": "anoopgupta671@gmail.com"
+    }
+]
