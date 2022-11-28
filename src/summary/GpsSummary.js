@@ -1,23 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './GpsSummary.css'
-import MyList from '../data.json'
+import axios from 'axios';
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { FcSearch } from "react-icons/fc";
+import { Link } from 'react-router-dom';
 
 export default function GpsSummary() {
     const [searchInput, setSearchInput] = useState("");
+    const [MyList, setMyList] = useState([]);
+    let i = 0;
+
+    useEffect(() => {
+        try {
+            axios.get("http://localhost:2000/Devicelist", {
+                headers: {
+                    "x-access-token": sessionStorage.getItem("x-access-token")
+                }
+            }).then((res) => {
+
+                setMyList(res.data.device)
+            })
+
+
+
+        } catch (e) {
+            console.log(e)
+        }
+    }, [])
+
+    function ShowTime(unix_timestamp) {
+
+        var a = new Date(unix_timestamp * 1000);
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+        return time;
+    }
+
+
+
     const handleChange = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
     };
     if (searchInput.length > 0) {
         MyList.filter((List) => {
-            //it's showing result in console. fix it
-            console.log(List.FName.match(searchInput))
-            return List.FName.match(searchInput);
+            //it's showing result in console. 
+            console.log(List.Device_id.match(searchInput))
+            return List.Device_id.match(searchInput);
 
         });
+
     }
+
 
     return (
         <div className='Holder' style={{ alignItems: "center" }}>
@@ -32,62 +72,75 @@ export default function GpsSummary() {
                         </div>
 
                     </div>
-                    <div style={{ position: "fixed", left: "78vw", margin: "2%", top: "34%" }}>
 
-
-                        <div style={{ position: "relative", left: "2vw", top: "-2vw", height: "8%" }}>
-                            <div className='ListNumber' style={{ position: "relative", right: "-30%" }}>1-3</div>
-                            <button style={{ border: "none", background: "none" }}><AiOutlineLeft /></button>
-                            <button style={{ border: "none", background: "none" }}><AiOutlineRight /></button>
-                        </div>
-                    </div>
                 </div>
-                <table className='styled-table' width={"80%"}>
-                    <thead>
-                        <tr>
-                            <th >
-                                name
-                            </th>
-                            <th>
-                                Location:
+                <div style={{ overflow: "scroll", overflowX: "hidden", height: "70%", width: "90%", padding: "2%" }}>
+                    <table className='styled-table' width={"100%"}>
+                        <thead>
+                            <tr>
+                                <th >
+                                    DeviceId
+                                </th>
+                                <th>
 
-                            </th>
-                            <th>
-                                Flight
-                            </th>
-                            <th>
-                                abc
+                                    Timestamp
+                                </th>
+                                <th>
+                                    Device Type
+                                </th>
+                                <th>
+                                    Location
 
-                            </th>
+                                </th>
+                                <th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {MyList.map((val, index) => {
-                            return (
-                                <>
+
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody >
+
+                            {MyList.map((val, index) => {
+                                return (
+
+
 
                                     <tr key={val.id} className='active-row'> <td >
-                                        {val.FName}
+                                        {val.Device_id}
 
                                     </td>
                                         <td>
-                                            {val.FName}
+                                            {ShowTime(val.unix)}
                                         </td>
                                         <td>
-                                            {val.FName}
+                                            {val.DeviceType}
                                         </td>
                                         <td>
-                                            {val.FName}
+                                            {val.Location}
+                                        </td>
+                                        <td>
+                                            <abbr title='see detail'>
+                                                <Link to={
+                                                    `/detail/${val.Device_id}`}
+                                                    state={{ type: val.DeviceType }}
+                                                >
+                                                    <AiOutlineRight />
+                                                </Link></abbr>
                                         </td>
 
                                     </tr>
+                                )
+
+                            })}
 
 
-                                </>)
 
-                        })}</tbody>
-                </table>
+
+
+                        </tbody>
+                    </table></div>
             </div></div>
     )
 }

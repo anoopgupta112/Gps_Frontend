@@ -1,0 +1,39 @@
+.GpsDetail {
+    height: 90vh;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 3%;
+
+}
+
+.tableContent {
+    display: flex;
+    height: 50%;
+    width: fit-content;
+    border-radius: 2%;
+    border: 1px solid black;
+}
+
+.Rightpart {
+    display: flex;
+    height: 50%;
+    padding: 2%;
+    margin: 5%;
+    border-radius: 2%;
+    border: 1px solid black;
+
+}
+
+.btngraph {
+    display: flex;
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    background-color: rgb(98, 184, 187);
+    height: 10%;
+    border-radius: 15%;
+    padding: 2%;
+    margin: 5%;
+
+}

@@ -39,6 +39,20 @@
     color: #090907;
 }
 
+
+/* for abbr  */
+
+
+abbr {
+    text-decoration: none;
+}
+
+abbr:hover {
+    cursor: default;
+}
+
+
+
 /* search bar css */
 
 .search-box {
